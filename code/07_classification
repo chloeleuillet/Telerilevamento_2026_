@@ -1,0 +1,74 @@
+# Code for classifying data
+
+library(terra)
+library(imageRy)
+
+# set wd (dopo 27)
+setwd("~/Downloads")
+# C://chloe/Downloads/
+getwd()
+
+im.list()
+
+sun <--im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
+
+?im.classify
+sunc <- im.classify(sun, num_clusters=3)
+
+?im-classify
+sunc <- im.classify(sun, num_clusters=3, seed=19)
+
+# import Grand Canyon data
+
+can <- im.import("dolansprings_oli_2013088_canyon_lrg.jpg")
+canc <- im.classify(can, num_clusters=4, seed=19)
+sun
+ncell(sun)
+ncell(can)
+canc
+cancc <- im.classify(can, seed=42, num_clusters=4)
+cancc <- im.classify(can, seed=42, num_clusters=4)
+
+# classifying data out of R
+list.files()
+
+# import data
+getwd()
+dji <- rast("desktop.ini"")
+dji <- flip(dji)
+plot(dji)
+
+plot(dji)
+dji <- im.classify(dji,num_clusters=3)
+
+# Mato grosso examples
+im.list()
+
+m2006 <- im.import("matogrosso_ast_2006209_lrg.jpg") 
+m1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")   
+im.multiframe(2,1)
+plot(m1992)
+plot(m2006)
+
+# Assign labels
+levels(m2006c) <- data.frame(
+  value = c(2, 1),
+  label = c("forest", "human")
+)
+
+# percentages 
+f1992 <- freq(m1992c) 
+freq1993
+perc1992 <- f1992$count * 100/ ncell(m1992c)
+
+f2006 <- freq(m2006c) 
+perc2006 <- f2006$count  * 100 / ncell(m2006c)
+
+
+# creating table
+tabout <- data.frame(
+  class=c("Forest","Human"),
+  perc1992=c(83, 17),
+  perc2006=c(45, 55)
+  )
+tabout
