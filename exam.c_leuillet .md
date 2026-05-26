@@ -24,7 +24,7 @@ L'area di studio è una zona soggetta a forte pressione antropica e climatica, d
 
 ## 3. 🛰️ Obiettivo del Progetto in R
 
-L’obiettivo dell'elaborazione è **quantificare la perdita di biomassa vegetale** causata dall'incendio, confrontando l'immagine pre-evento (Giugno 2025) e post-evento (Agosto 2025), calcolando indici spettrali come:
+L’obiettivo dell'elaborazione è **quantificare la perdita di biomassa vegetale** causata dall'incendio, confrontando l'immagine pre-evento (Giugno 2025) e post-evento (9 luglio 2025), calcolando indici spettrali come:
 
 * **NDVI** (Normalized Difference Vegetation Index)
 * **DVI** (Difference Vegetation Index)
