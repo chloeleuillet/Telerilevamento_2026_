@@ -3,22 +3,23 @@
 # 1. Pacchetti
 library(terra)
 library(viridis)
+install.packages("devtools")
+install.packages("viridis")
+install.packages("ggplot2")
+install.packages("patchwork")
+install.packages("GGally")
+library(devtools)
+library(viridis)
+library(ggplot2)
+library(patchwork)
+library(GGally)
 
-# 2. Cartella di lavoro
-setwd("C:\Users\chloe\copernicus")
+# 2. Import sentinel-2 bands
+b1 <- im.import("2025-06-09 pre rosso.tif")  # B04 Pre-incendio (9 giugno 2025)
+b2 <- im.import("2025-07-09 post rosso.tif") # B08 Pre-incendio (9 giugno 2025)
+b3 <- im.import("2025-07-09 post rosso.tif")  # B04 Post-incendio (9 agosto 2025)
+b4 <- im.import("2025-07-09 post NDVI.tif") # B08  Post-incendio (9 agosto 2025)
 
-# 3. Import bande (già convertite in .tif)
-#   Pre-incendio (9 giugno 2025)
-red_pre <- rast("2025-06-09 pre rosso.tif")   # B04
-nir_pre <- rast("2025-06-09 pre NDVI.tif")   # B08
-
-#   Post-incendio (9 agosto 2025)
-red_post <- rast("2025-07-09 post rosso.tif")  # B04
-nir_post <- rast("2025-07-09 post NDVI.tif")  # B08
-
-# 4. Allineamento (per sicurezza)
-nir_pre  <- resample(nir_pre,  red_pre)
-nir_post <- resample(nir_post, red_post)
 
 # 5. Calcolo NDVI
 ndvi_pre  <- (nir_pre  - red_pre)  / (nir_pre  + red_pre)
