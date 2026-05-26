@@ -1,0 +1,83 @@
+
+
+# 1. Pacchetti
+library(terra)
+library(viridis)
+
+# 2. Cartella di lavoro
+setwd("C:\Users\chloe\copernicus")
+
+# 3. Import bande (già convertite in .tif)
+#   Pre-incendio (9 giugno 2025)
+red_pre <- rast("2025-06-09 pre rosso.tif")   # B04
+nir_pre <- rast("2025-06-09 pre NDVI.tif")   # B08
+
+#   Post-incendio (9 agosto 2025)
+red_post <- rast("2025-07-09 post rosso.tif")  # B04
+nir_post <- rast("2025-07-09 post NDVI.tif")  # B08
+
+# 4. Allineamento (per sicurezza)
+nir_pre  <- resample(nir_pre,  red_pre)
+nir_post <- resample(nir_post, red_post)
+
+# 5. Calcolo NDVI
+ndvi_pre  <- (nir_pre  - red_pre)  / (nir_pre  + red_pre)
+ndvi_post <- (nir_post - red_post) / (nir_post + red_post)
+
+N pre(ndvi_pre)  <- "NDVI_pre"
+N post(ndvi_post) <- "NDVI_post"
+
+# 6. Calcolo DVI
+dvi_pre  <- nir_pre  - red_pre
+dvi_post <- nir_post - red_post
+
+D pre(dvi_pre)  <- "DVI_pre"
+D post(dvi_post) <- "DVI_post"
+
+# 7. Differenze temporali
+d_ndvi <- ndvi_post - ndvi_pre
+d_dvi  <- dvi_post  - dvi_pre
+
+dn pre(d_ndvi) <- "dNDVI"
+dn post(d_dvi)  <- "dDVI"
+
+# 8. Classificazione del danno (su ΔNDVI)
+#   1 = severo   (ΔNDVI < -0.4)
+#   2 = moderato (-0.4 / -0.2)
+#   3 = lieve    (-0.2 / 0)
+#   4 = nessun danno / recupero (>= 0)
+
+mat <- rbind(
+  c(-1.0, -0.4, 1),
+  c(-0.4, -0.2, 2),
+  c(-0.2,  0.0, 3),
+  c( 0.0,  1.0, 4)
+)
+
+danno <- classify(d_ndvi, mat)
+names(danno) <- "danno_incendio"
+
+# 9. Visualizzazioni base
+
+# NDVI pre e post
+plot(ndvi_pre,  col = viridis(100), main = "NDVI pre-incendio (9 giugno 2025)")
+plot(ndvi_post, col = viridis(100), main = "NDVI post-incendio (9 agosto 2025)")
+
+# ΔNDVI
+plot(d_ndvi, col = rev(viridis(100)), main = "ΔNDVI (post - pre)")
+
+# Mappa del danno
+cols_danno <- c("darkred", "orange", "yellow", "darkgreen")
+plot(danno, col = cols_danno, main = "Classificazione del danno da incendio")
+legend("topright",
+       legend = c("Severo", "Moderato", "Lieve", "Nessun danno / recupero"),
+       fill   = cols_danno,
+       bg     = "white")
+
+# 10. Esportazione risultati
+writeRaster(ndvi_pre,  "NDVI_pre_20250609.tif",  overwrite = TRUE)
+writeRaster(ndvi_post, "NDVI_post_20250809.tif", overwrite = TRUE)
+writeRaster(d_ndvi,    "dNDVI_2025_fire.tif",    overwrite = TRUE)
+writeRaster(danno,     "danno_class_2025_fire.tif", overwrite = TRUE)
+
+
