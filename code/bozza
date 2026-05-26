@@ -1,7 +1,11 @@
 
 
 # 1. Pacchetti
+install.packages("imageRy")
+library("imageRy")
+install.packages("terra")
 library(terra)
+install_github("ducciorocchini/imageRy")
 library(viridis)
 install.packages("devtools")
 install.packages("viridis")
@@ -15,10 +19,19 @@ library(patchwork)
 library(GGally)
 
 # 2. Import sentinel-2 bands
-b1 <- im.import("2025-06-09 pre rosso.tif")  # B04 Pre-incendio (9 giugno 2025)
-b2 <- im.import("2025-07-09 post rosso.tif") # B08 Pre-incendio (9 giugno 2025)
-b3 <- im.import("2025-07-09 post rosso.tif")  # B04 Post-incendio (9 agosto 2025)
-b4 <- im.import("2025-07-09 post NDVI.tif") # B08  Post-incendio (9 agosto 2025)
+b1 <- im.import("pre_rosso.tif")  # B04 Pre-incendio (9 giugno 2025)
+b2 <- im.import("pre_NDVI.jpg") # B08 Pre-incendio (9 giugno 2025)
+b3 <- im.import("post_rosso.tif")  # B04 Post-incendio (9 agosto 2025)
+b4 <- im.import("post_NDVI.jpg") # B08  Post-incendio (9 agosto 2025)
+
+# 3. im.multiframe
+im.multiframe(1,2)
+plot(b1, col=inferno(100))
+plot(b3, col=inferno(100))
+
+im.multiframe(1,2)
+plot(b2, col=viridis(100))
+plot(b4, col=viridis(100))
 
 
 # 5. Calcolo NDVI
