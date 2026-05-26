@@ -18,13 +18,24 @@ library(ggplot2)
 library(patchwork)
 library(GGally)
 
-# 2. Import sentinel-2 bands
-b1 <- im.import("pre_rosso.tif")  # B04 Pre-incendio (9 giugno 2025)
-b2 <- im.import("pre_NDVI.jpg") # B08 Pre-incendio (9 giugno 2025)
-b3 <- im.import("post_rosso.tif")  # B04 Post-incendio (9 agosto 2025)
-b4 <- im.import("post_NDVI.jpg") # B08  Post-incendio (9 agosto 2025)
 
-# 3. im.multiframe
+## 2. Impostazione della working directory
+setwd("C:/Users/chloe/copernicus")
+
+
+# 3. Rilevazione sentinel-2 bands da locale
+b1 <- rast("pre_rosso.tif") # B04 Pre-incendio (9 giugno 2025)
+b2 <- rast("pre_NDVI.jpg") # B08 Pre-incendio (9 giugno 2025)
+b3 <- rast("post_rosso.tif") # B04 Post-incendio (9 agosto 2025)
+b4 <- rast("post_NDVI.jpg") # B08  Post-incendio (9 agosto 2025)
+
+# 4. Creazione grafici
+plot(b1)
+plot(b2)
+plot(b3)
+plot(b4)
+
+# 5. im.multiframe
 im.multiframe(1,2)
 plot(b1, col=inferno(100))
 plot(b3, col=inferno(100))
