@@ -2,15 +2,15 @@
 # 1. Pacchetti
 
 install.packages("imageRy")
-library("imageRy")
 install.packages("terra")
-library(terra)
 install_github("ducciorocchini/imageRy")
-library(viridis)
 install.packages("devtools")
 install.packages("viridis")
 install.packages("ggplot2")
 install.packages("patchwork")
+library("imageRy")
+library(terra)
+library(viridis)
 library(devtools)
 library(viridis)
 library(ggplot2)
@@ -19,8 +19,10 @@ library(patchwork)
 
 ## 2. Impostazione della working directory
 setwd("C:\copernicus")
-setwd("C:\copernicus")
+setwd("C://copernicus/")
 
+setwd("C:\\copernicus\post 2025 07 09.SAFE.zip")
+setwd(/C://copernicus/)
 
 # 3. Rilevazione sentinel-2 bands da locale
 b1 <- rast("pre 2025-05-30.SAFE") # Pre-incendio (30 giugno 2025)
