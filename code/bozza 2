@@ -16,8 +16,10 @@ library(viridis)
 library(ggplot2)
 library(patchwork)
 
+
 ## 2. Impostazione della working directory
-setwd("C:/Users/chloe/copernicus")
+setwd("C:\copernicus")
+setwd("C:\copernicus")
 
 
 # 3. Rilevazione sentinel-2 bands da locale
