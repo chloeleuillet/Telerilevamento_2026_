@@ -1,1 +1,36 @@
 
+# 1. Pacchetti
+
+install.packages("imageRy")
+library("imageRy")
+install.packages("terra")
+library(terra)
+install_github("ducciorocchini/imageRy")
+library(viridis)
+install.packages("devtools")
+install.packages("viridis")
+install.packages("ggplot2")
+install.packages("patchwork")
+library(devtools)
+library(viridis)
+library(ggplot2)
+library(patchwork)
+
+## 2. Impostazione della working directory
+setwd("C:/Users/chloe/copernicus")
+
+
+# 3. Rilevazione sentinel-2 bands da locale
+b1 <- rast("pre 2025-05-30.SAFE") # Pre-incendio (30 giugno 2025)
+b2 <- rast("post 2025 07 09.SAFE") # Pre-incendio (9 luglio 2025)
+
+# 4. Creazione grafici
+plot(b1)
+plot(b2)
+
+# 5. im.multiframe
+im.multiframe(1,2)
+plot(b1, col=inferno(100))
+plot(b2, col=inferno(100))
+
+
