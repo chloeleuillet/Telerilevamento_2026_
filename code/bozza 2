@@ -37,9 +37,17 @@ plot(b2_nir, main="NIR Post", col=inferno(100))
 plot(b2_swir, main="SWIR Post", col=inferno(100))
 #
 
-# 5. im.multiframe
-im.multiframe(1,2)
-plot(b1, col=inferno(100))
-plot(b2, col=inferno(100))
+# Allineamento risoluzione
+b1_swir <- resample(b1_swir, b1_nir)
+b2_swir <- resample(b2_swir, b2_nir)
+
+# 5. Calcolo NBR (Normalized Burn Ratio)
+nbr_pre  <-(b1_nir - b1_swir) / (b1_nir + b1_swir)
+nbr_post <-(b2_nir - b2_swir) / (b2_nir + b2_swir)
 
 
+# 6. Visualizzazione NBR (confronto visivo incendio)
+par(mfrow = c(1, 2))
+
+plot(nbr_pre, main="NBR Pre-incendio", col=inferno(100))
+plot(nbr_post, main="NBR Post-incendio", col=inferno(100))
