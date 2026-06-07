@@ -3,7 +3,6 @@
 
 install.packages("imageRy")
 install.packages("terra")
-install_github("ducciorocchini/imageRy")
 install.packages("devtools")
 install.packages("viridis")
 install.packages("ggplot2")
