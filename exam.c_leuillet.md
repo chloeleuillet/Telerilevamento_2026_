@@ -36,13 +36,16 @@ setwd("C:/copernicus 2")
 ## 5. Rilevazione sentinel-2 bands da locale
 
 #PRE incendio 
+
 b08_pre <- rast ("C:/copernicus 2/Pre_29_06_2025/b08RAW.tiff")
 
 b12_pre <- rast ("C:/copernicus 2/Pre_29_06_2025/b12RAW.tiff")
 
 b04_pre <- rast ("C:/copernicus 2/Pre_29_06_2025/b04RAW.tiff")
 
+
 #POST
+
 b08_post <- rast ("C:/copernicus 2/Post_09_07_2025/b08RAW.tiff")
 
 b12_post <- rast ("C:/copernicus 2/Post_09_07_2025/b12RAW.tiff")
@@ -67,8 +70,12 @@ plot(b04_post, main="B04 (Red) - Clorofilla post incendio", col=gray.colors(100)
 <img width="688" height="465" alt="Grafico 1" src="https://github.com/user-attachments/assets/869a4b57-186f-4cdc-a148-4241880319d2" />
 
 ## 7. Calcolo NBR (Normalized Burn Ratio)
-# NBR pre e post
+#pre 
+
 nbr_pre  <- (b08_pre - b12_pre) / (b08_pre + b12_pre)
+
+#post
+
 nbr_post <- (b08_post - b12_post) / (b08_post + b12_post)
 
 ## 8. Visualizzazione NBR (confronto visivo incendio)
