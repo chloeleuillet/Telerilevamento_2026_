@@ -34,6 +34,7 @@ library(ggplot2)
 setwd("C:/copernicus 2")
 
 ## 5. Rilevazione sentinel-2 bands da locale
+
 #PRE incendio 
 b08_pre <- rast ("C:/copernicus 2/Pre_29_06_2025/b08RAW.tiff")
 
@@ -63,6 +64,7 @@ plot(b08_post, main="B08 (NIR) - Vegetazione post incendio", col=terrain.colors(
 plot(b12_post, main="B12 (SWIR) - Aree bruciate", col=heat.colors(100))
 plot(b04_post, main="B04 (Red) - Clorofilla post incendio", col=gray.colors(100))
 #
+<img width="688" height="465" alt="Grafico 1" src="https://github.com/user-attachments/assets/869a4b57-186f-4cdc-a148-4241880319d2" />
 
 ## 7. Calcolo NBR (Normalized Burn Ratio)
 # NBR pre e post
@@ -75,6 +77,9 @@ par(mfrow = c(1, 2))
 
 plot(nbr_pre, main="NBR Pre-incendio", col=rev(terrain.colors(100)))
 plot(nbr_post, main="NBR Post-incendio", col=rev(terrain.colors(100)))
+
+<img width="494" height="307" alt="Grafico 2" src="https://github.com/user-attachments/assets/01b4ca83-b576-45f6-a575-bf83cb1649aa" />
+
 
 ## 9. Calcolo NDVI (normalized different vegetation index)
 # NDVI pre-incendio
@@ -90,6 +95,7 @@ par(mfrow = c(1, 2))
 plot(ndvi_pre, main="NDVI Pre-incendio", col=rev(terrain.colors(100)))
 plot(ndvi_post, main="NDVI Post-incendio", col=rev(terrain.colors(100)))
 #
+<img width="522" height="314" alt="Grafico 3" src="https://github.com/user-attachments/assets/7f6a2a0f-a7bb-4055-8513-e58e3c7056ee" />
 
 ## 11. Classificazione danno
 
@@ -107,6 +113,8 @@ dev.new()
 plot(severity,
      col=c("green","yellow","orange","red"),
      main="Classificazione severità incendio")
+
+<img width="406" height="421" alt="Grafico 4" src="https://github.com/user-attachments/assets/6360b2ab-8221-4833-8f7a-4485f03eec47" />
 
 
 ## 12. Percentuale danno per pixel
@@ -129,6 +137,8 @@ area_class <- expanse(severity, unit="ha", byValue=TRUE)
 
 area_class
 
+<img width="416" height="395" alt="Grafico 5" src="https://github.com/user-attachments/assets/5c0ea98a-9c97-40b7-baae-59b59caa7bcb" />
+
 
 ## 15. Istogramma per severità incendio
 
@@ -146,6 +156,9 @@ hist(values(dnbr),
      main="Distribuzione dNBR",
      xlab="Valori dNBR")
 
+<img width="430" height="412" alt="Grafico 6" src="https://github.com/user-attachments/assets/934848fd-13fc-4a4c-aa03-1745d9b2f706" />
+
+
 ## 17. Ripresa terreno post incendio confronto temporale
 
 b08_rip <- rast ("C:/copernicus 2/Ripresa 04 03 2026/b08RAW.tiff")
@@ -159,6 +172,8 @@ par(mfrow = c(1, 3))
 plot(ndvi_pre, main="NDVI Pre incendio")
 plot(ndvi_post, main="NDVI Post incendio")
 plot(ndvi_rec, main="NDVI Recupero")
+
+<img width="607" height="317" alt="Grafico 7" src="https://github.com/user-attachments/assets/9abfaadf-4123-4f34-8557-0e7f566a536e" />
 
 
 ## Conclusioni
