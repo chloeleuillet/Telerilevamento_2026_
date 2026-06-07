@@ -12,12 +12,12 @@ exam.c_leuillet .md
 
 Gli ecosistemi mediterranei sono estremamente vulnerabili agli incendi, un fenomeno che la crisi climatica sta rendendo sempre più frequente e intenso. Marsiglia, situata in un'area caratterizzata da una complessa interfaccia tra ambiente naturale e urbanizzato, è stata colpita da un grave incendio boschivo nell'estate 2025.
 
-Il telerilevamento satellitare è uno strumento fondamentale per monitorare la distruzione della copertura vegetale e la successiva capacità di resilienza del territorio. In questo progetto, utilizzeremo i dati Sentinel-2 per quantificare il danno subito dalla vegetazione, analizzando la variazione spettrale tra il periodo pre-incendio e quello post-incendio.
+Il telerilevamento satellitare è uno strumento fondamentale per monitorare la distruzione della copertura vegetale e la successiva capacità di resilienza del territorio. In questo progetto, utilizzeremo i dati Sentinel-2 L2A per quantificare il danno subito dalla vegetazione, analizzando la variazione spettrale tra il periodo pre-incendio e quello post-incendio.
 
 
 ## 2. Obiettivo del Progetto in R
 
-L’obiettivo dell'elaborazione è **quantificare la perdita di biomassa vegetale** causata dall'incendio, confrontando l'immagine pre-evento (Giugno 2025) e post-evento (9 luglio 2025), calcolando indici spettrali come:
+L’obiettivo dell'elaborazione è **quantificare la perdita di biomassa vegetale** causata dall'incendio, ma anche l'estenzione dell'incendio e il modo in cui si è ripreso il terreno, confrontando l'immagine pre-evento (Giugno 2025), subito post-evento (9 luglio 2025) e marzo 2026, calcolando indici spettrali come NBR (Normalized Burn Ratio) e NDVI (normalized different vegetation index).
 
 
 ## 3. Pacchetti
