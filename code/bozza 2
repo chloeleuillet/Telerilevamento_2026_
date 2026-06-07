@@ -29,6 +29,7 @@ b04_post <- rast ("C:/copernicus 2/Post_09_07_2025/b04RAW.tiff")
 
 
 ## 4. Creazione grafici
+dev.new()
 par(mfrow = c(2, 3))
 
 # PRE
@@ -48,6 +49,7 @@ nbr_pre  <- (b08_pre - b12_pre) / (b08_pre + b12_pre)
 nbr_post <- (b08_post - b12_post) / (b08_post + b12_post)
 
 ## 6. Visualizzazione NBR (confronto visivo incendio)
+dev.new()
 par(mfrow = c(1, 2))
 
 plot(nbr_pre, main="NBR Pre-incendio", col=rev(terrain.colors(100)))
@@ -61,6 +63,7 @@ ndvi_pre <- (b08_pre - b04_pre) / (b08_pre + b04_pre)
 ndvi_post <- (b08_post - b04_post) / (b08_post + b04_post)
 
 ## 8. Visualizzazione NDVI (normalized different vegetation index)
+dev.new()
 par(mfrow = c(1, 2))
 
 plot(ndvi_pre, main="NDVI Pre-incendio", col=rev(terrain.colors(100)))
@@ -77,6 +80,8 @@ severity <- classify(dnbr, rbind(
   c(0.27, 0.44, 3),  # moderato
   c(0.44, Inf, 4)    # alto
 ))
+
+dev.new()
 
 plot(severity,
      col=c("green","yellow","orange","red"),
@@ -106,7 +111,7 @@ area_class
 
 ## 13. Istogramma per severità incendio
 
-
+dev.new()
 barplot(area_class$area,
         names.arg=c("Non bruciato", "Basso", "Moderato", "Alto"),
         col=c("green","yellow","orange","red"),
@@ -114,7 +119,7 @@ barplot(area_class$area,
         ylab="Ettari")
 
 ## 14. Distribuzione del danno 
-
+dev.new()
 hist(values(dnbr),
      col="orange",
      main="Distribuzione dNBR",
@@ -127,9 +132,10 @@ b04_rip <- rast ("C:/copernicus 2/Ripresa 04 03 2026/b04RAW.tiff")
 
 ndvi_rec <- (b08_rip - b04_rip) / (b08_rip + b04_rip)
 
+dev.new()
 par(mfrow = c(1, 3))
 
 plot(ndvi_pre, main="NDVI Pre incendio")
 plot(ndvi_post, main="NDVI Post incendio")
 plot(ndvi_rec, main="NDVI Recupero")
-
+#
