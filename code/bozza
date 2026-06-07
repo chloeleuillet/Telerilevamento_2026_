@@ -105,4 +105,11 @@ writeRaster(ndvi_post, "NDVI_post_20250809.tif", overwrite = TRUE)
 writeRaster(d_ndvi,    "dNDVI_2025_fire.tif",    overwrite = TRUE)
 writeRaster(danno,     "danno_class_2025_fire.tif", overwrite = TRUE)
 
+# 4. Creazione grafici
+par(mfrow = c(2, 2))
 
+plot(b1_nir, main="NIR Pre", col=inferno(100))
+plot(b1_swir, main="SWIR Pre", col=inferno(100))
+plot(b2_nir, main="NIR Post", col=inferno(100))
+plot(b2_swir, main="SWIR Post", col=inferno(100))
+#
