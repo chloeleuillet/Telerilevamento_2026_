@@ -120,7 +120,7 @@ hist(values(dnbr),
      main="Distribuzione dNBR",
      xlab="Valori dNBR")
 
-# 15. Ripresa terreno post incendio confronto temporale
+## 15. Ripresa terreno post incendio confronto temporale
 
 b08_rip <- rast ("C:/copernicus 2/Ripresa 04 03 2026/b08RAW.tiff")
 b04_rip <- rast ("C:/copernicus 2/Ripresa 04 03 2026/b04RAW.tiff")
