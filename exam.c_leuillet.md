@@ -126,11 +126,15 @@ f$percent <- (f$count / tot) * 100
 
 f
 
+<img width="373" height="115" alt="immagine" src="https://github.com/user-attachments/assets/bc9d7876-3d7f-4a61-8016-9be24517cc3b" />
+
+
 ## 13. Calcolo ettari
 area <- expanse(severity, unit="ha")
 
 area
 
+ 1 1706.785 ha
 
 ## 14. Calcolo danno per ettari
 area_class <- expanse(severity, unit="ha", byValue=TRUE)
@@ -138,6 +142,7 @@ area_class <- expanse(severity, unit="ha", byValue=TRUE)
 area_class
 
 <img width="416" height="395" alt="Grafico 5" src="https://github.com/user-attachments/assets/5c0ea98a-9c97-40b7-baae-59b59caa7bcb" />
+
 
 
 ## 15. Istogramma per severità incendio
