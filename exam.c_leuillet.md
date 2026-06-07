@@ -6,7 +6,7 @@ exam.c_leuillet .md
 > ![massiccio dell'Étoile](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.mRrhzPLj8ytBhOG0Vns4EwHaE8%3Fr%3D0%26pid%3DApi&f=1&ipt=ea81da7d16cf44fc9b59881251b8494d4ecbf02b8f6147e3baa0151ebe8b253d&ipo=images)
 > ![video dell'incendio](https://img.youtube.com/vi/iMtpQLQPxN0/0.jpg)]
 
-#### Analisi dell'Impatto dell'Incendio a Marsiglia (Giugno - Luglio 2025) 
+#### Analisi dell'Impatto dell'Incendio a Marsiglia (8 Luglio 2025, Pennes-Mirabeau) 
 
 ## 1. 📌Ecological background
 
@@ -178,7 +178,7 @@ plot(ndvi_rec, main="NDVI Recupero")
 
 ## Conclusioni
 
-Il progetto ha permesso di mappare con precisione l'impatto dell'incendio di Marsiglia 2025. L'uso di R ha facilitato un'analisi qualitativa e quantitativa che va oltre la semplice osservazione visiva, confermando l'utilità del telerilevamento nella gestione delle emergenze forestali.
+Il progetto ha permesso di mappare con precisione l'impatto dell'incendio delle Pennes-Mirabeau a Marsiglia al luglio 2025. L'uso di R ha facilitato un'analisi qualitativa e quantitativa, confermando l'utilità del telerilevamento nella gestione delle emergenze forestali.
 
 
 ## Il contributo del telerilevamento
